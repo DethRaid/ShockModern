@@ -13,17 +13,23 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_LIST_DIR})
 
 set(SRC_DIR "${CMAKE_CURRENT_LIST_DIR}/ShockMac/Game Src")
-set(3RD_PARTY_DIR ${CMAKE_CURRENT_LIST_DIR}/3rdparty)
+set(3RD_PARTY_DIR ${SRC_DIR}/../Libraries)
+
+include_directories(SYSTEM ${SRC_DIR}/Headers)
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 
+add_subdirectory(${3RD_PARTY_DIR}/2D)
+
 set(SHOCK_SRC_C
         ${SRC_DIR}/AI.C
         ${SRC_DIR}/AIRUPT.C
+        ${SRC_DIR}/AMAP.C
         ${SRC_DIR}/AMAPLOOP.C
         ${SRC_DIR}/AMMOMFD.C
+        ${SRC_DIR}/AUDIOLOG.C
         ${SRC_DIR}/AUTOMAP.C
         ${SRC_DIR}/BARK.C
         ${SRC_DIR}/BIOHELP.C
@@ -34,6 +40,7 @@ set(SHOCK_SRC_C
         ${SRC_DIR}/CRITERR.C
         ${SRC_DIR}/CYBER.C
         ${SRC_DIR}/CYBERMFD.C
+        ${SRC_DIR}/CYBMEM.C
         ${SRC_DIR}/CYBRND.C
         ${SRC_DIR}/DAMAGE.C
         ${SRC_DIR}/DIGIFX.C
@@ -92,6 +99,7 @@ set(SHOCK_SRC_C
         ${SRC_DIR}/NEWMFD.C
         ${SRC_DIR}/OBJAPP.C
         ${SRC_DIR}/OBJECTS.C
+        ${SRC_DIR}/OBJLOAD.C
         ${SRC_DIR}/OBJPROP.C
         ${SRC_DIR}/OBJSIM.C
         ${SRC_DIR}/OBJUSE.C
@@ -130,5 +138,3 @@ set(SHOCK_SRC_C
         ${SRC_DIR}/WRAPPER.C)
 
 add_executable(SystemShock ${SHOCK_SRC_C})
-
-include_directories(SYSTEM ${SRC_DIR}/Headers)
