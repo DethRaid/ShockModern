@@ -12,45 +12,47 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/../../Build/2D)
 
 set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_LIST_DIR})
 
-set(SRC_DIR ${CMAKE_CURRENT_LIST_DIR}/Source)
+set(2D_SRC_DIR ${CMAKE_CURRENT_LIST_DIR}/Source)
+set(2D_HEADERS_DIR
+        ${2D_SRC_DIR}/clip
+        ${2D_SRC_DIR}/Flat 8
+        ${2D_SRC_DIR}/gen
+        ${2D_SRC_DIR}/gr
+        ${2D_SRC_DIR}/rsd
+        ${2D_SRC_DIR})
 
 enable_language(ASM)
 
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/../FIX ${CMAKE_CURRENT_LIST_DIR}/../../Build/FIX)
 
 file(GLOB 2D_SRC_C
-        "${SRC_DIR}/clip/*.c"
-        "${SRC_DIR}/Flat 8/*.c"
-        "${SRC_DIR}/gen/*.c"
-        "${SRC_DIR}/gr/*.c"
-        "${SRC_DIR}/rsd/*.c"
-        "${SRC_DIR}/*.c"
+        "${2D_SRC_DIR}/clip/*.c"
+        "${2D_SRC_DIR}/Flat 8/*.c"
+        "${2D_SRC_DIR}/gen/*.c"
+        "${2D_SRC_DIR}/gr/*.c"
+        "${2D_SRC_DIR}/rsd/*.c"
+        "${2D_SRC_DIR}/*.c"
         )
 
 file(GLOB 2D_HEADERS
-        "${SRC_DIR}/clip/*.h"
-        "${SRC_DIR}/Flat 8/*.h"
-        "${SRC_DIR}/gen/*.h"
-        "${SRC_DIR}/gr/*.h"
-        "${SRC_DIR}/rsd/*.h"
-        "${SRC_DIR}/*.h"
+        "${2D_SRC_DIR}/clip/*.h"
+        "${2D_SRC_DIR}/Flat 8/*.h"
+        "${2D_SRC_DIR}/gen/*.h"
+        "${2D_SRC_DIR}/gr/*.h"
+        "${2D_SRC_DIR}/rsd/*.h"
+        "${2D_SRC_DIR}/*.h"
         )
 
 file(GLOB 2D_SRC_ASM
-        "${SRC_DIR}/rsd/*.asm"
-        "${SRC_DIR}/*.s"
+        "${2D_SRC_DIR}/rsd/*.asm"
+        "${2D_SRC_DIR}/*.s"
         )
 
-add_library(2D SHARED ${2D_SRC_C} ${2D_SRC_ASM} ${2D_HEADERS})
+add_library(2D SHARED ${2D_SRC_C} ${2D_SRC_ASM} ${2D_HEADERS} ${FIX_HEADERS})
 
 target_include_directories(2D PRIVATE
-        ${SRC_DIR}/clip
-        ${SRC_DIR}/Flat 8
-        ${SRC_DIR}/gen
-        ${SRC_DIR}/gr
-        ${SRC_DIR}/rsd
-        ${SRC_DIR}
-        ${FIX_HEADERS}
+        ${2D_HEADERS_DIR}
+        ${FIX_HEADERS_DIR}
 )
 
 target_link_libraries(2D FIX)

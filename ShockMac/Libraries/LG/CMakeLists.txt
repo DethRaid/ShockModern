@@ -12,25 +12,26 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/../../Build/LG)
 
 set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_LIST_DIR})
 
-set(SRC_DIR ${CMAKE_CURRENT_LIST_DIR}/Source)
+set(LG_SRC_DIR ${CMAKE_CURRENT_LIST_DIR}/Source)
+set(LG_HEADERS_DIR ${LG_SRC_DIR})
 
 enable_language(ASM)
 
 file(GLOB LG_SRC_C
-        "${SRC_DIR}/*.c"
+        "${LG_SRC_DIR}/*.c"
         )
 
 file(GLOB LG_HEADERS
-        "${SRC_DIR}/*.h"
+        "${LG_SRC_DIR}/*.h"
         )
 
 file(GLOB LGSRC_ASM
-        "${SRC_DIR}/*.s"
+        "${LG_SRC_DIR}/*.s"
         )
 
 
 add_library(LG SHARED ${LG_SRC_C} ${LG_SRC_ASM} ${LG_HEADERS})
 
 target_include_directories(LG PRIVATE
-        ${SRC_DIR}
+        ${LG_HEADERS_DIR}
         )
