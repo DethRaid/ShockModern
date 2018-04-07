@@ -17,28 +17,25 @@ set(SRC_DIR ${CMAKE_CURRENT_LIST_DIR}/Source)
 enable_language(ASM)
 
 file(GLOB 2D_SRC_C
-        "${SRC_DIR}/Clip/*.C"
-        "${SRC_DIR}/Flat 8/*.C"
+        "${SRC_DIR}/clip/*.c"
         "${SRC_DIR}/Flat 8/*.c"
-        "${SRC_DIR}/Gen/*.C"
-        "${SRC_DIR}/GR/*.C"
-        "${SRC_DIR}/RSD/*.C"
-        "${SRC_DIR}/RSD/*.c"
-        "${SRC_DIR}/*.C"
+        "${SRC_DIR}/gen/*.c"
+        "${SRC_DIR}/gr/*.c"
+        "${SRC_DIR}/rsd/*.c"
         "${SRC_DIR}/*.c"
         )
 
 file(GLOB 2D_HEADERS
-        "${SRC_DIR}/Clip/*.H"
-        "${SRC_DIR}/Flat 8/*.H"
-        "${SRC_DIR}/Gen/*.H"
-        "${SRC_DIR}/GR/*.H"
-        "${SRC_DIR}/RSD/*.H"
-        "${SRC_DIR}/*.H"
+        "${SRC_DIR}/clip/*.h"
+        "${SRC_DIR}/Flat 8/*.h"
+        "${SRC_DIR}/gen/*.h"
+        "${SRC_DIR}/gr/*.h"
+        "${SRC_DIR}/rsd/*.h"
+        "${SRC_DIR}/*.h"
         )
 
 file(GLOB 2D_SRC_ASM
-        "${SRC_DIR}/RSD/*.ASM"
+        "${SRC_DIR}/rsd/*.asm"
         "${SRC_DIR}/*.s"
         )
 
